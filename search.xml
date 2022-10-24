@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1430-Plan</title>
-    <url>/2022/10/22/1430-Plan/</url>
-    <content><![CDATA[<p>个人定期总结。<a id="more"></a></p>
-]]></content>
-      <categories>
-        <category>Life</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Git</title>
     <url>/2020/07/01/Git/</url>
     <content><![CDATA[<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>​        假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：</p>
@@ -23,6 +14,28 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1430-Plan</title>
+    <url>/2022/10/22/1430-Plan/</url>
+    <content><![CDATA[<p>个人定期总结。<a id="more"></a></p>
+]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>How is my blog set up?</title>
+    <url>/2020/06/02/How-is-my-blog-set-up/</url>
+    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>​    我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
+<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
+<ol start="2">
+<li>gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Tutorial</tag>
       </tags>
   </entry>
   <entry>
@@ -44,19 +57,6 @@
       </categories>
       <tags>
         <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How is my blog set up?</title>
-    <url>/2020/06/02/How-is-my-blog-set-up/</url>
-    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>​    我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
-<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
-<ol start="2">
-<li>gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Tutorial</tag>
       </tags>
   </entry>
   <entry>
@@ -83,21 +83,21 @@
       </tags>
   </entry>
   <entry>
-    <title>about</title>
+    <title>About me</title>
     <url>/about/index.html</url>
-    <content><![CDATA[<p>统信在职</p>
-<p>江科大毕业</p>
-<p>1996年出生</p>
+    <content><![CDATA[<h1 id="Education"><a href="#Education" class="headerlink" title="Education:"></a>Education:</h1><ul>
+<li>2015~2019 本科 江苏科技大学</li>
+</ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
