@@ -3,7 +3,9 @@
   <entry>
     <title>Git</title>
     <url>/2020/07/01/Git/</url>
-    <content><![CDATA[<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：<br>&lt;! –more–&gt;</p>
+    <content><![CDATA[<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：</p>
+<a id="more"></a>
+
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull origin master --rebase</span><br><span class="line">git push --force</span><br></pre></td></tr></table></figure>
 
 <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>git可以进行一些配置,让git在使用的时候更顺手</p>
@@ -20,12 +22,34 @@
     <title>How is my blog set up?</title>
     <url>/2020/06/02/How-is-my-blog-set-up/</url>
     <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
-<p>&lt;! –more–&gt;</p>
+<a id="more"></a>
+
 <h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
 <p>2.gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</p>
 ]]></content>
       <tags>
         <tag>Tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Transform docx into pdf on windows</title>
+    <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
+    <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
+<a id="more"></a>
+
+<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
+<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
+<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
+<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>
@@ -52,38 +76,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Transform docx into pdf on windows</title>
-    <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
-    <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
-<a id="more"></a>
-
-<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
-<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
-<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-
-<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
-<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>About me</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="Education"><a href="#Education" class="headerlink" title="Education:"></a>Education:</h1><ul>
 <li>2015~2019 本科 江苏科技大学</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>tags</title>
