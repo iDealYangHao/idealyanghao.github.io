@@ -4,12 +4,12 @@
     <title>Git</title>
     <url>/2020/07/01/Git/</url>
     <content><![CDATA[<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull origin master --rebase</span><br><span class="line">git push --force</span><br></pre></td></tr></table></figure>
 
 <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>git可以进行一些配置,让git在使用的时候更顺手</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;加了config代表全局都这样配置,不加代表只在本文件夹内这样配置</span><br><span class="line">git config &lt;--global&gt; user.name &quot;your name&quot; </span><br><span class="line">git config &lt;--global&gt; user.email &quot;your@email.com&quot; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;记住用户名和密码,执行完了这条命令后,git push推送时输入一次账号密码就可以记住了</span><br><span class="line">git config &lt;--global&gt; credential.helper store</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//加了config代表全局都这样配置,不加代表只在本文件夹内这样配置</span><br><span class="line">git config &lt;--global&gt; user.name &quot;your name&quot; </span><br><span class="line">git config &lt;--global&gt; user.email &quot;your@email.com&quot; </span><br><span class="line"></span><br><span class="line">//记住用户名和密码,执行完了这条命令后,git push推送时输入一次账号密码就可以记住了</span><br><span class="line">git config &lt;--global&gt; credential.helper store</span><br></pre></td></tr></table></figure>
 
 <h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>本地commit后发现提交进去了垃圾文件，或者commit的信息写错了，解决如下：<br>1、git reset –mixed HEAD^<br>使用 git reset HEAD^ 命令默认的就是mixed模式，此命令表示不删除本地工作空间提交的代码，也即保留对工作区的修改，但是修改未进入暂存区。</p>
 <p>2、git reset –soft HEAD^<br>此命令也表示不删除本地工作空间提交的代码，也即保留对工作区的修改，并且修改已进入暂存区。</p>
@@ -27,10 +27,10 @@
   <entry>
     <title>How is my blog set up?</title>
     <url>/2020/06/02/How-is-my-blog-set-up/</url>
-    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
-<a id="more"></a>
+    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login">appveyor</a>,使用github登陆，教程如下：</p>
+<span id="more"></span>
 
-<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
+<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/">here</a> to look over the tutorial</p>
 <p>2.gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</p>
 ]]></content>
       <tags>
@@ -41,15 +41,15 @@
     <title>Transform docx into pdf on windows</title>
     <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
     <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
+<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
 <p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
 <h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> <span class="built_in">QAxObject</span>(<span class="string">&quot;Word.Application&quot;</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;Documents&quot;</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;Open(string,bool,bool)&quot;</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;ExportAsFixedFormat(string, int ,bool)&quot;</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;<span class="built_in">dynamicCall</span>(<span class="string">&quot;Close(bool)&quot;</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
-<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
-<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
+<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
+<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
 ]]></content>
       <categories>
         <category>Qt</category>
@@ -62,13 +62,13 @@
     <title>iPhone Changes Wallpapers</title>
     <url>/2021/07/31/iPhone-Changes-Wallpapers/</url>
     <content><![CDATA[<p>传统壁纸软件，有广告！很不爽！学会这个捷径，一键换iPhone壁纸。</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<h1 id="shortcuts-捷径-设置壁纸"><a href="#shortcuts-捷径-设置壁纸" class="headerlink" title="shortcuts(捷径)设置壁纸"></a>shortcuts(捷径)设置壁纸</h1><p>如图：设置流程，可以直接下载该<a href="https://www.icloud.com/shortcuts/1acdcf04148441f1abf5307ce0b2028f" target="_blank" rel="noopener">壁纸捷径</a></p>
+<h1 id="shortcuts-捷径-设置壁纸"><a href="#shortcuts-捷径-设置壁纸" class="headerlink" title="shortcuts(捷径)设置壁纸"></a>shortcuts(捷径)设置壁纸</h1><p>如图：设置流程，可以直接下载该<a href="https://www.icloud.com/shortcuts/1acdcf04148441f1abf5307ce0b2028f">壁纸捷径</a></p>
 <p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210731234308.jpg" alt="壁纸获取流程图"></p>
-<h1 id="Unsplash"><a href="#Unsplash" class="headerlink" title="Unsplash"></a>Unsplash</h1><p>这是一个开源图库，重点是<strong>免费</strong>！甚至你<strong>商用</strong>都可以，更甚至他们还开放了<strong>接口</strong>！<a href="https://unsplash.com" target="_blank" rel="noopener">unsplash</a>, 就是这么良心.</p>
-<h2 id="获取任意图片"><a href="#获取任意图片" class="headerlink" title="获取任意图片"></a>获取任意图片</h2><p>这是官方接口文档，仅对于低频获取的小型软件：<a href="https://source.unsplash.com" target="_blank" rel="noopener">https://source.unsplash.com</a> ，还有一个针对开发者用户的：<a href="https://unsplash.com/developers" target="_blank" rel="noopener">https://unsplash.com/developers</a> ，开发者接口需要注册才可以使用。对于壁纸更换，用前一个就行了，无需注册，给出链接，直接下载图片。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;最简单，直接随机获取一张</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;random</span><br><span class="line">&#x2F;&#x2F;加个尺寸</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;random&#x2F;800x600</span><br><span class="line">&#x2F;&#x2F;获取你喜欢的一个摄影师的作品（如果ta存在图库的话）</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;user&#x2F;erondu&#x2F;1600x900</span><br><span class="line">&#x2F;&#x2F;获取你喜欢的摄影师喜欢的作品</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;user&#x2F;erondu&#x2F;likes&#x2F;1600x900</span><br><span class="line">&#x2F;&#x2F;获取非随机照片，daily或者weekly，每天&#x2F;周只返回同一张图片</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;daily</span><br><span class="line">&#x2F;&#x2F;获取包含某个对象的图片，比如自然主题类，里面还包含水的</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;?nature,water</span><br><span class="line">&#x2F;&#x2F;你也可以找一张狗相关的图片，还带有具体尺寸，注意尺寸的位置不在最后了</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com&#x2F;1600x900&#x2F;?dog</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;更详细的说明在官方</span><br><span class="line">https:&#x2F;&#x2F;source.unsplash.com</span><br></pre></td></tr></table></figure>
+<h1 id="Unsplash"><a href="#Unsplash" class="headerlink" title="Unsplash"></a>Unsplash</h1><p>这是一个开源图库，重点是<strong>免费</strong>！甚至你<strong>商用</strong>都可以，更甚至他们还开放了<strong>接口</strong>！<a href="https://unsplash.com">unsplash</a>, 就是这么良心.</p>
+<h2 id="获取任意图片"><a href="#获取任意图片" class="headerlink" title="获取任意图片"></a>获取任意图片</h2><p>这是官方接口文档，仅对于低频获取的小型软件：<a href="https://source.unsplash.com">https://source.unsplash.com</a> ，还有一个针对开发者用户的：<a href="https://unsplash.com/developers">https://unsplash.com/developers</a> ，开发者接口需要注册才可以使用。对于壁纸更换，用前一个就行了，无需注册，给出链接，直接下载图片。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//最简单，直接随机获取一张</span><br><span class="line">https://source.unsplash.com/random</span><br><span class="line">//加个尺寸</span><br><span class="line">https://source.unsplash.com/random/800x600</span><br><span class="line">//获取你喜欢的一个摄影师的作品（如果ta存在图库的话）</span><br><span class="line">https://source.unsplash.com/user/erondu/1600x900</span><br><span class="line">//获取你喜欢的摄影师喜欢的作品</span><br><span class="line">https://source.unsplash.com/user/erondu/likes/1600x900</span><br><span class="line">//获取非随机照片，daily或者weekly，每天/周只返回同一张图片</span><br><span class="line">https://source.unsplash.com/daily</span><br><span class="line">//获取包含某个对象的图片，比如自然主题类，里面还包含水的</span><br><span class="line">https://source.unsplash.com/?nature,water</span><br><span class="line">//你也可以找一张狗相关的图片，还带有具体尺寸，注意尺寸的位置不在最后了</span><br><span class="line">https://source.unsplash.com/1600x900/?dog</span><br><span class="line"></span><br><span class="line">//更详细的说明在官方</span><br><span class="line">https://source.unsplash.com</span><br></pre></td></tr></table></figure>
 
 <p>将上述任意一个地址填到壁纸shortcuts的文本中，然后，run it！</p>
 <p>对了，至于开发者才用到的接口，内容更加详细。但是我只是想换个壁纸呀～，后续如果在computer vision的学习中有需要大量图片，会专门看一下开发者接口的。其中一个场景就是：指定所有狗相关的图片，下载到本地，作为图片训练集，利用深度学习来让电脑认识“狗”。</p>
