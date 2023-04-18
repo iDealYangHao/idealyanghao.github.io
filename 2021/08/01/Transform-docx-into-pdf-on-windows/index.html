@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png">
 <meta property="article:published_time" content="2021-08-01T20:26:05.000Z">
-<meta property="article:modified_time" content="2023-03-04T21:45:36.704Z">
+<meta property="article:modified_time" content="2023-04-18T12:53:31.437Z">
 <meta property="article:author" content="YangHao">
 <meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-04 21:45:36" itemprop="dateModified" datetime="2023-03-04T21:45:36+00:00">2023-03-04</time>
+                <time title="Modified: 2023-04-18 12:53:31" itemprop="dateModified" datetime="2023-04-18T12:53:31+00:00">2023-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,15 +250,15 @@
 
       
         <p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
-<span id="more"></span>
+<a id="more"></a>
 
-<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a target="_blank" rel="noopener" href="https://download.qt.io/archive/qt/5.12/5.12.2/">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
+<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
 <p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
 <h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> <span class="built_in">QAxObject</span>(<span class="string">&quot;Word.Application&quot;</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;Documents&quot;</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;Open(string,bool,bool)&quot;</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;<span class="built_in">querySubObject</span>(<span class="string">&quot;ExportAsFixedFormat(string, int ,bool)&quot;</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;<span class="built_in">dynamicCall</span>(<span class="string">&quot;Close(bool)&quot;</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
-<p>具体参数请看微软官方的文档： <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
-<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a target="_blank" rel="noopener" href="https://github.com/iDealYangHao/word2pdf.git">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
+<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
+<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
 
     </div>
 
@@ -339,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">条件准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#条件准备"><span class="nav-number">1.</span> <span class="nav-text">条件准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
