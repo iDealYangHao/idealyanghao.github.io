@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git</title>
-    <url>/2020/07/01/Git/</url>
-    <content><![CDATA[<p>Git常用操作</p>
-<a id="more"></a>
-
-<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull origin master --rebase</span><br><span class="line">git push --force</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>git可以进行一些配置,让git在使用的时候更顺手</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;加了config代表全局都这样配置,不加代表只在本文件夹内这样配置</span><br><span class="line">git config &lt;--global&gt; user.name &quot;your name&quot; </span><br><span class="line">git config &lt;--global&gt; user.email &quot;your@email.com&quot; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;记住用户名和密码,执行完了这条命令后,git push推送时输入一次账号密码就可以记住了</span><br><span class="line">git config &lt;--global&gt; credential.helper store</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>本地commit后发现提交进去了垃圾文件，或者commit的信息写错了，解决如下：<br>1、git reset –mixed HEAD^<br>使用 git reset HEAD^ 命令默认的就是mixed模式，此命令表示不删除本地工作空间提交的代码，也即保留对工作区的修改，但是修改未进入暂存区。</p>
-<p>2、git reset –soft HEAD^<br>此命令也表示不删除本地工作空间提交的代码，也即保留对工作区的修改，并且修改已进入暂存区。</p>
-<p>3、git reset –hard HEAD^<br>此命令表示删除本地工作空间提交的代码，也即不保留对工作区的修改，工作区完全回退到上个版本的样子。此命令注意慎用。</p>
-<p>三者最大区别<br>前面两个命令会保留自己在本地的修改（纯撤回提交，如果是提交之后发现有的地方修改错误，可使用这两个命令撤回提交，然后只对错误的地方重新修改，最后再重新提交），而最后一个命令会恢复自己在本地的修改到上一个提交版本。</p>
-<p>必备技能<br>1）HEAD^的意思是上一个版本，也可以写成HEAD～1，如果你进行了2次commit，都想撤回的话，可以使用HEAD～2，以此类推。<br>2）如果是commit注释写错了，只是想改一下注释，只需要执行命令行：git commit –amend。此时会进入默认Vim编辑器，修改完之后保存即可。<br>3）浪子回头再回头。意思是我撤回commit后，我又后悔了，我不想撤回了…。此时我们可以通过版本号来回退，先使用 git reflog 命令来获取版本号，再使用 git reset –hard 版本号 命令来恢复。</p>
-<h2 id="删除远程仓库的一次commit"><a href="#删除远程仓库的一次commit" class="headerlink" title="删除远程仓库的一次commit"></a>删除远程仓库的一次commit</h2><p>这个提交方式，不会在远程仓库留下修改记录，但是谨记一点：强推也会删掉别人的commit记录，所以手速要快</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">commit3  &#x2F;&#x2F;已经推到远程的一次错误提交</span><br><span class="line">commit2</span><br><span class="line">commit1</span><br><span class="line"></span><br><span class="line">如果想回到某次提交，可以这样做：</span><br><span class="line"></span><br><span class="line">git reset --hard commitID2</span><br><span class="line">git push -f</span><br><span class="line"></span><br><span class="line">但是如果别人有了一次commit4的提交，也会被擦除记录，所以，谨慎使用！请确认别人在commit2后没有提交</span><br></pre></td></tr></table></figure>
-<h2 id="远程分支重命名"><a href="#远程分支重命名" class="headerlink" title="远程分支重命名"></a>远程分支重命名</h2><p>首先，远程分支是不支持直接重命名的，所以要曲线修改分支名字</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -m oldName newName       &#x2F;&#x2F;1.本地分支：修改打算更改的分支名</span><br><span class="line">git push --delete origin oldName    &#x2F;&#x2F;2.远程分支：删除远程的旧分支</span><br><span class="line">git push -u origin newName          &#x2F;&#x2F;3.本地-&gt;远程：推到远程的新建分支上</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How is my blog set up?</title>
     <url>/2020/06/02/How-is-my-blog-set-up/</url>
     <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
@@ -39,6 +11,39 @@
 ]]></content>
       <tags>
         <tag>Tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git</title>
+    <url>/2020/07/01/Git/</url>
+    <content><![CDATA[<p>Git常用操作</p>
+<a id="more"></a>
+
+<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>假设一个项目有两个分支，一个是master，一个是dev，你在dev分支上正在开发一个新功能，但是这时候，有人已经在master分支上又有了新的提交，于是你的dev就落后了master一个commit，当你想把dev代码合到master时，需要这样做：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull origin master --rebase</span><br><span class="line">git push --force</span><br></pre></td></tr></table></figure>
+
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>git可以进行一些配置,让git在使用的时候更顺手</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;加了&lt;--global&gt;代表全局都这样配置,不加代表只在本文件夹内这样配置</span><br><span class="line">git config &lt;--global&gt; user.name &quot;your name&quot; </span><br><span class="line">git config &lt;--global&gt; user.email &quot;your@email.com&quot; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;记住用户名和密码,执行完了这条命令后,git push推送时输入一次账号密码就可以记住了</span><br><span class="line">git config &lt;--global&gt; credential.helper store</span><br></pre></td></tr></table></figure>
+
+<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>本地commit后发现提交进去了垃圾文件，或者commit的信息写错了，解决如下：<br>1、git reset –mixed HEAD^<br>使用 git reset HEAD^ 命令默认的就是mixed模式，此命令表示不删除本地工作空间提交的代码，也即保留对工作区的修改，但是修改未进入暂存区。</p>
+<p>2、git reset –soft HEAD^<br>此命令也表示不删除本地工作空间提交的代码，也即保留对工作区的修改，并且修改已进入暂存区。</p>
+<p>3、git reset –hard HEAD^<br>此命令表示删除本地工作空间提交的代码，也即不保留对工作区的修改，工作区完全回退到上个版本的样子。此命令注意慎用。</p>
+<p>三者最大区别<br>前面两个命令会保留自己在本地的修改（纯撤回提交，如果是提交之后发现有的地方修改错误，可使用这两个命令撤回提交，然后只对错误的地方重新修改，最后再重新提交），而最后一个命令会恢复自己在本地的修改到上一个提交版本。</p>
+<p>必备技能<br>1）HEAD^的意思是上一个版本，也可以写成HEAD～1，如果你进行了2次commit，都想撤回的话，可以使用HEAD～2，以此类推。<br>2）如果是commit注释写错了，只是想改一下注释，只需要执行命令行：git commit –amend。此时会进入默认Vim编辑器，修改完之后保存即可。<br>3）浪子回头再回头。意思是我撤回commit后，我又后悔了，我不想撤回了…。此时我们可以通过版本号来回退，先使用 git reflog 命令来获取版本号，再使用 git reset –hard 版本号 命令来恢复。</p>
+<h2 id="删除远程仓库的一次commit"><a href="#删除远程仓库的一次commit" class="headerlink" title="删除远程仓库的一次commit"></a>删除远程仓库的一次commit</h2><p>这个提交方式，不会在远程仓库留下修改记录，但是谨记一点：强推也会删掉别人的commit记录，所以手速要快</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">commit3  &#x2F;&#x2F;已经推到远程的一次错误提交</span><br><span class="line">commit2</span><br><span class="line">commit1</span><br><span class="line"></span><br><span class="line">如果想回到某次提交，可以这样做：</span><br><span class="line"></span><br><span class="line">git reset --hard commitID2</span><br><span class="line">git push -f</span><br><span class="line"></span><br><span class="line">但是如果别人有了一次commit4的提交，也会被擦除记录，所以，谨慎使用！请确认别人在commit2后没有提交</span><br></pre></td></tr></table></figure>
+<h2 id="远程分支重命名"><a href="#远程分支重命名" class="headerlink" title="远程分支重命名"></a>远程分支重命名</h2><p>首先，远程分支是不支持直接重命名的，所以要曲线修改分支名字</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -m oldName newName       &#x2F;&#x2F;1.本地分支：修改打算更改的分支名</span><br><span class="line">git push --delete origin oldName    &#x2F;&#x2F;2.远程分支：删除远程的旧分支</span><br><span class="line">git push -u origin newName          &#x2F;&#x2F;3.本地-&gt;远程：推到远程的新建分支上</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建远程分支"><a href="#新建远程分支" class="headerlink" title="新建远程分支"></a>新建远程分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -b newBranchName       &#x2F;&#x2F;以当前分支的内容作为基准内容，新建一个分支，并切换过去</span><br><span class="line">git push                            &#x2F;&#x2F;将本地的分支推到远程</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h2><p><code>git branch --delete oldBranch</code></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
