@@ -27,13 +27,11 @@
 <meta property="og:site_name" content="Yang Hao">
 <meta property="og:description" content="Git常用操作">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/2023-12-01_14-40-33.png">
 <meta property="article:published_time" content="2020-07-01T15:55:10.000Z">
-<meta property="article:modified_time" content="2023-12-02T12:53:09.457Z">
+<meta property="article:modified_time" content="2023-12-02T13:24:08.667Z">
 <meta property="article:author" content="YangHao">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/2023-12-01_14-40-33.png">
 
 <link rel="canonical" href="https://idealyanghao.github.io/2020/07/01/Git/">
 
@@ -226,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-12-02 12:53:09" itemprop="dateModified" datetime="2023-12-02T12:53:09+00:00">2023-12-02</time>
+                <time title="Modified: 2023-12-02 13:24:08" itemprop="dateModified" datetime="2023-12-02T13:24:08+00:00">2023-12-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,8 +269,14 @@
 <h2 id="新建远程分支"><a href="#新建远程分支" class="headerlink" title="新建远程分支"></a>新建远程分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b newBranchName       &#x2F;&#x2F;以当前分支的内容作为基准内容，新建一个分支，并切换过去</span><br><span class="line">git push                            &#x2F;&#x2F;将本地的分支推到远程</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h2><p><code>git branch --delete oldBranch</code></p>
-<h2 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h2><p><code>git rebase</code>变基：</p>
-<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/2023-12-01_14-40-33.png" alt="2023-12-01_14-40-33"></p>
+<h2 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h2><ul>
+<li>原本的远程main分支有若干提交记录：commit id：A-&gt;B-&gt;C.</li>
+<li>拉取到本地新建dev分支，开发新功能，提交新commit：A-&gt;B-&gt;C-&gt;1-&gt;2.</li>
+<li>此时远程main分支提交了新的commit：A-&gt;B-&gt;C-&gt;D.</li>
+<li>将本地main分支更新到D的进度，再切换到dev分支：<code>git rebase main</code></li>
+<li>再切回main分支：<code>git merge dev</code></li>
+<li>此时本地main分支commit顺序为：A-&gt;B-&gt;C-&gt;D-&gt;1-&gt;2.</li>
+</ul>
 
     </div>
 
