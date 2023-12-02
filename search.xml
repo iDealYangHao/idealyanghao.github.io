@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>How is my blog set up?</title>
-    <url>/2020/06/02/How-is-my-blog-set-up/</url>
-    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
-<a id="more"></a>
-
-<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
-<p>2.gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</p>
-]]></content>
-      <tags>
-        <tag>Tutorial</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git</title>
     <url>/2020/07/01/Git/</url>
     <content><![CDATA[<p>Git常用操作</p>
@@ -38,12 +25,27 @@
 <h2 id="新建远程分支"><a href="#新建远程分支" class="headerlink" title="新建远程分支"></a>新建远程分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -b newBranchName       &#x2F;&#x2F;以当前分支的内容作为基准内容，新建一个分支，并切换过去</span><br><span class="line">git push                            &#x2F;&#x2F;将本地的分支推到远程</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h2><p><code>git branch --delete oldBranch</code></p>
+<h2 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h2><p><code>git rebase</code>变基：</p>
+<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/2023-12-01_14-40-33.png" alt="2023-12-01_14-40-33"></p>
 ]]></content>
       <categories>
         <category>Tools</category>
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How is my blog set up?</title>
+    <url>/2020/06/02/How-is-my-blog-set-up/</url>
+    <content><![CDATA[<h1 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h1><p>我采用的是<a href="https://ci.appveyor.com/login" target="_blank" rel="noopener">appveyor</a>,使用github登陆，教程如下：</p>
+<a id="more"></a>
+
+<h1 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h1><p>1.Open Typora directly.Click <a href="https://www.dazhuanlan.com/2020/03/06/5e617a0666d9a/" target="_blank" rel="noopener">here</a> to look over the tutorial</p>
+<p>2.gihub的token要在appveyor上加密一下，才可以使用，为了你的安全着想</p>
+]]></content>
+      <tags>
+        <tag>Tutorial</tag>
       </tags>
   </entry>
   <entry>
