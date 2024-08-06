@@ -55,6 +55,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Core Dumped(核心已转储)</title>
+    <url>/2024/08/06/core-dump/</url>
+    <content><![CDATA[<h1 id="1-生成core文件"><a href="#1-生成core文件" class="headerlink" title="1.生成core文件"></a>1.生成core文件</h1><p>设置core文件的大小限制和存储位置</p>
+<ul>
+<li><p>设置core文件大小：<code>ulimit -c unlimited</code></p>
+</li>
+<li><p>设置存储位置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">kernel.core_pattern &#x3D; &#x2F;tmp&#x2F;core-%p-%e-%t</span><br></pre></td></tr></table></figure>
+
+<p>其本质是修改<code>/proc/sys/kernel/core_pattern</code>文件的内容，也可以使用其他方法</p>
+</li>
+</ul>
+<h1 id="2-使用GDB来分析core文件"><a href="#2-使用GDB来分析core文件" class="headerlink" title="2.使用GDB来分析core文件"></a>2.使用GDB来分析core文件</h1><p>编译时加上<code>-g</code>选项，以便于生成的core文件可以用gdb来调试。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -g -o a a.c</span><br><span class="line">.&#x2F;a</span><br><span class="line">gdb .&#x2F;a core-xx-xx</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Transform docx into pdf on windows</title>
     <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
     <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
