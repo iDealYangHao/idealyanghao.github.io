@@ -2,6 +2,48 @@
 <search>
   <entry>
     <title>Git</title>
+    <url>/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
+    <content><![CDATA[<h1 id="C-C-交叉编译"><a href="#C-C-交叉编译" class="headerlink" title="C/C++交叉编译"></a>C/C++交叉编译</h1><p>交叉编译区别于本地编译</p>
+<a id="more"></a>
+
+<h2 id="一、本地主机、目标主机和交叉编译"><a href="#一、本地主机、目标主机和交叉编译" class="headerlink" title="一、本地主机、目标主机和交叉编译"></a>一、本地主机、目标主机和交叉编译</h2><ul>
+<li><strong>本地主机</strong>是完成开发、预处理、编译、汇编、链接的主机</li>
+<li><strong>目标主机</strong>是程序最终运行的主机，一般用于目标主机无法进行开发工作的情况，也适合用于多版本库的编译。</li>
+<li><strong>交叉编译</strong>是在本地主机编译能在目标主机运行的程序，本地主机和目标主机的指令集架构不同，一般是AMD64的本地和ARM的目标。</li>
+</ul>
+<h2 id="二、交叉编译工具"><a href="#二、交叉编译工具" class="headerlink" title="二、交叉编译工具"></a>二、交叉编译工具</h2><p>在本地主机开发，并在本地主机运行的叫本地编译，使用常规的本地编译器：gcc/g++。本地主机编译目标主机运行的叫交叉编译，需要使用对应的交叉编译工具，例如在x86_64（即AMD64）上编译arm（64位）架构的程序所需要安装的工具如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install gcc-aarch64-linux-gnu  //安装c/c++交叉编译工具</span><br><span class="line">sudo apt install g++-aarch64-linux-gnu</span><br><span class="line"></span><br><span class="line">sudo apt install libc6-dev-arm64-cross  //编译时提醒缺少一些头文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、交叉编译程序"><a href="#三、交叉编译程序" class="headerlink" title="三、交叉编译程序"></a>三、交叉编译程序</h2><p>有如下c++程序, main.cpp:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"g++ cross"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>本地编译，使用常规g++编译器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">g++ main.cpp    //编译，产生a.out的可执行文件</span><br><span class="line">./a.out		    //运行，输出"g++ cross"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用交叉编译，需要使用刚下载的交叉编译工具</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//先查看交叉编译器工具版本，验证工具安装成功</span><br><span class="line">aarch64-linux-gnu-g++ -v</span><br><span class="line"></span><br><span class="line">//然后交叉编译上述main.cpp</span><br><span class="line">aarch64-linux-gnu-g++ main.cpp</span><br></pre></td></tr></table></figure>
+
+<p>交叉编译出来的可执行文件不可以在本地主机运行，只能在符合的目标主机运行。所谓交叉编译，核心还是编译，把原本的<code>g++</code>换成<code>aarch64-linux-gnu-g++</code>即可。</p>
+</li>
+</ol>
+<h2 id="四、进阶：使用cmake进行交叉编译"><a href="#四、进阶：使用cmake进行交叉编译" class="headerlink" title="四、进阶：使用cmake进行交叉编译"></a>四、进阶：使用cmake进行交叉编译</h2><p>在CMakeLists.txt的同级目录下新建xxx.cmake文件，名字任意，后缀须为cmake，其内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 指定目标系统</span><br><span class="line">set(CMAKE_SYSTEM_NAME Linux)</span><br><span class="line"># 指定目标平台</span><br><span class="line">set(CMAKE_SYSTEM_PROCESSOR arm)</span><br><span class="line"># 指定C编译器</span><br><span class="line">set(CMAKE_C_COMPILER &#x2F;usr&#x2F;bin&#x2F;aarch64-linux-gnu-gcc)</span><br><span class="line"># 指定C++编译器</span><br><span class="line">set(CMAKE_CXX_COMPILER &#x2F;usr&#x2F;bin&#x2F;aarch64-linux-gnu-g++)</span><br></pre></td></tr></table></figure>
+
+<p>使用cmake时，需要加上该文件参数，指导cmake进行交叉编译：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;创建编译目录</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;新建的xxx.cmake起名为：armToolchain.cmake</span><br><span class="line">cmake .. -DCMAKE_TOOLCHAIN_FILE&#x3D;..&#x2F;armToolchain.cmake</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;进行编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>如果不带<code>-DCMAKE_TOOLCHAIN_FILE</code>参数，直接<code>cmake ..</code>就是进行本地编译</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Cross Compile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git</title>
     <url>/2020/07/01/Git/</url>
     <content><![CDATA[<p>Git常用操作</p>
 <a id="more"></a>
@@ -55,6 +97,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Transform docx into pdf on windows</title>
+    <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
+    <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
+<a id="more"></a>
+
+<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
+<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
+<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
+<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Core Dumped(核心已转储)</title>
     <url>/2024/08/06/core-dump/</url>
     <content><![CDATA[<h1 id="1-生成core文件"><a href="#1-生成core文件" class="headerlink" title="1.生成core文件"></a>1.生成core文件</h1><p>设置core文件的大小限制和存储位置</p>
@@ -76,27 +139,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Transform docx into pdf on windows</title>
-    <url>/2021/08/01/Transform-docx-into-pdf-on-windows/</url>
-    <content><![CDATA[<p>在存在大批量docx文件转换为pdf文件时，使用word的转换功能，打开一个转换一个，要是让你转换100个呢？市面上迅捷转换器做的不错，但是一次只能转换200个文件，而且是会员情况下。要是你需要处理20万个docx文件呢？</p>
-<a id="more"></a>
-
-<h1 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h1><p>windows 10电脑，装有word2016版及其以后，其他版本未测，情况未知。安装qt，如果你没有qt，可以现安装一个： <a href="https://download.qt.io/archive/qt/5.12/5.12.2/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.12/5.12.2/</a> ，具体细节从略。</p>
-<p><img src="https://raw.githubusercontent.com/iDealYangHao/blogImages/master/20210801204028.png" alt="windows_qt"></p>
-<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>Qt调用Microsoft的com组件，实现docx转换pdf操作，其实其他语言也可以调用这个com组件的，只不过Qt封装的比较好用。核心代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新建一个word应用</span></span><br><span class="line">QAxObject *wordApplication = <span class="keyword">new</span> QAxObject(<span class="string">"Word.Application"</span>);</span><br><span class="line"><span class="comment">//并设置为处理文档模式,因为word还可以处理非docx的文件</span></span><br><span class="line">QAxObject *wordDoc = wordApplication&gt;querySubObject(<span class="string">"Documents"</span>);</span><br><span class="line"><span class="comment">//打开一个docx文件：inputfileName，比如：C:/Desktop/test.docx</span></span><br><span class="line">QAxObject *doc = wordDoc&gt;querySubObject(<span class="string">"Open(string,bool,bool)"</span>,</span><br><span class="line">  inputfileName,<span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//开始转换成pdf，OutputFileName由你自己决定,比如 C:/Desktop/test.pdf</span></span><br><span class="line">doc-&gt;querySubObject(<span class="string">"ExportAsFixedFormat(string, int ,bool)"</span>, </span><br><span class="line">  OutputFileName, <span class="number">17</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//最后处理完毕了一定要把打开的docx文件给关闭了，不然处理太多了会卡死word</span></span><br><span class="line">doc-&gt;dynamicCall(<span class="string">"Close(bool)"</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-
-<p>具体参数请看微软官方的文档： <a href="https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open" target="_blank" rel="noopener">https://docs.microsoft.com/zh-CN/office/vba/api/Word.Documents.Open</a> ，我不想啰里八嗦。</p>
-<p>如果你连代码也不想写，拿去吧！pdf的代码仓库： <a href="https://github.com/iDealYangHao/word2pdf.git" target="_blank" rel="noopener">https://github.com/iDealYangHao/word2pdf.git</a> ,万一不能运行，可以gmail我。</p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>

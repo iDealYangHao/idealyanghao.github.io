@@ -2,54 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://idealyanghao.github.io/2020/07/01/Git/</loc>
+    <loc>https://idealyanghao.github.io/tags/index.html</loc>
     
-    <lastmod>2024-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/2020/06/02/How-is-my-blog-set-up/</loc>
-    
-    <lastmod>2024-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/2024/08/06/core-dump/</loc>
-    
-    <lastmod>2024-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/2021/08/01/Transform-docx-into-pdf-on-windows/</loc>
-    
-    <lastmod>2024-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/2021/07/31/iPhone-Changes-Wallpapers/</loc>
-    
-    <lastmod>2024-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/about/index.html</loc>
-    
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,16 +13,70 @@
   <url>
     <loc>https://idealyanghao.github.io/categories/index.html</loc>
     
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://idealyanghao.github.io/tags/index.html</loc>
+    <loc>https://idealyanghao.github.io/about/index.html</loc>
     
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2021/07/31/iPhone-Changes-Wallpapers/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2024/08/06/core-dump/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2021/08/01/Transform-docx-into-pdf-on-windows/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2020/06/02/How-is-my-blog-set-up/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2020/07/01/Git/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,50 +85,57 @@
 
   <url>
     <loc>https://idealyanghao.github.io/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://idealyanghao.github.io/tags/Cross-Compile/</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://idealyanghao.github.io/tags/Git/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://idealyanghao.github.io/tags/Tutorial/</loc>
-    <lastmod>2024-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/tags/Linux/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://idealyanghao.github.io/tags/Qt/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/tags/Linux/</loc>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://idealyanghao.github.io/tags/iPhone/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://idealyanghao.github.io/tags/unsplash/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -128,14 +144,14 @@
   
   <url>
     <loc>https://idealyanghao.github.io/categories/Tools/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://idealyanghao.github.io/categories/Qt/</loc>
-    <lastmod>2024-08-06</lastmod>
+    <lastmod>2024-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
