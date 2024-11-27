@@ -2,25 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://idealyanghao.github.io/tags/index.html</loc>
-    
-    <lastmod>2024-11-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/categories/index.html</loc>
-    
-    <lastmod>2024-11-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/about/index.html</loc>
+    <loc>https://idealyanghao.github.io/2024/08/06/core-dump/</loc>
     
     <lastmod>2024-11-27</lastmod>
     
@@ -38,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://idealyanghao.github.io/2024/08/06/core-dump/</loc>
+    <loc>https://idealyanghao.github.io/about/index.html</loc>
     
     <lastmod>2024-11-27</lastmod>
     
@@ -47,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://idealyanghao.github.io/2021/08/01/Transform-docx-into-pdf-on-windows/</loc>
+    <loc>https://idealyanghao.github.io/categories/index.html</loc>
     
     <lastmod>2024-11-27</lastmod>
     
@@ -56,7 +38,16 @@
   </url>
   
   <url>
-    <loc>https://idealyanghao.github.io/2020/06/02/How-is-my-blog-set-up/</loc>
+    <loc>https://idealyanghao.github.io/tags/index.html</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2024-11-27</lastmod>
     
@@ -74,7 +65,16 @@
   </url>
   
   <url>
-    <loc>https://idealyanghao.github.io/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
+    <loc>https://idealyanghao.github.io/2020/06/02/How-is-my-blog-set-up/</loc>
+    
+    <lastmod>2024-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/2021/08/01/Transform-docx-into-pdf-on-windows/</loc>
     
     <lastmod>2024-11-27</lastmod>
     

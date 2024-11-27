@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git</title>
+    <title>C/C++交叉编译</title>
     <url>/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
-    <content><![CDATA[<h1 id="C-C-交叉编译"><a href="#C-C-交叉编译" class="headerlink" title="C/C++交叉编译"></a>C/C++交叉编译</h1><p>交叉编译区别于本地编译</p>
+    <content><![CDATA[<p>交叉编译区别于本地编译</p>
 <a id="more"></a>
 
 <h2 id="一、本地主机、目标主机和交叉编译"><a href="#一、本地主机、目标主机和交叉编译" class="headerlink" title="一、本地主机、目标主机和交叉编译"></a>一、本地主机、目标主机和交叉编译</h2><ul>
