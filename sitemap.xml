@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://idealyanghao.github.io/about/index.html</loc>
+    
+    <lastmod>2025-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/categories/index.html</loc>
+    
+    <lastmod>2025-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://idealyanghao.github.io/tags/index.html</loc>
+    
+    <lastmod>2025-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://idealyanghao.github.io/2024/11/11/CC++%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2025-01-07</lastmod>
@@ -57,33 +84,6 @@
   
   <url>
     <loc>https://idealyanghao.github.io/2021/07/31/iPhone-Changes-Wallpapers/</loc>
-    
-    <lastmod>2025-01-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/about/index.html</loc>
-    
-    <lastmod>2025-01-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/categories/index.html</loc>
-    
-    <lastmod>2025-01-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://idealyanghao.github.io/tags/index.html</loc>
     
     <lastmod>2025-01-07</lastmod>
     
